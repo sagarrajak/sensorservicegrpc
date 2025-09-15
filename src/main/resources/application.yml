@@ -13,3 +13,6 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
+
+sensor:
+  id: "sensor-1"
