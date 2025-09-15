@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files=true;
+option java_package="com.sesor.grpc.sensorservicegrpc.grpc";
+
+
+service TemperatureService {
+  rpc StreamTemperature(TemperatureRequest) returns (stream TemperatureResponse);
+}
+
+message TemperatureRequest {
+  string sensor_id = 1;
+}
+
+message TemperatureResponse {
+  string sensor_id = 1;
+  double temperature = 2;
+  string timestamp = 3;
+}
