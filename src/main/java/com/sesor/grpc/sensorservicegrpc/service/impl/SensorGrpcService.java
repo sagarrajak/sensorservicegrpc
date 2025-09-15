@@ -54,6 +54,7 @@ public class SensorGrpcService extends TemperatureServiceGrpc.TemperatureService
 
     @Override
     public void onData(SensorData message) {
+        log.info("received data {}", message);
         TemperatureResponse tempratureReponse = SensorMapper.getTempratureReponse(message);
         for (StreamObserver<TemperatureResponse> obser: observer) {
             try {

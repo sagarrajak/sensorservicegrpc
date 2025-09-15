@@ -4,6 +4,7 @@ package com.sesor.grpc.sensorservicegrpc.service.impl;
 import com.sesor.grpc.sensorservicegrpc.model.SensorData;
 import com.sesor.grpc.sensorservicegrpc.service.MessagePublisher;
 import com.sesor.grpc.sensorservicegrpc.service.MessageSubscriber;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@Slf4j
 public class SensorMockService implements MessagePublisher<SensorData> {
     private final String sesnorId;
     private static final Random random = new Random();
@@ -37,6 +39,7 @@ public class SensorMockService implements MessagePublisher<SensorData> {
                 .timestamp(Instant.now())
                 .build();
         this.publishData(sensorData);
+        log.info("published data {}", sensorData);
     }
 
     public void startDataGenerator() {
